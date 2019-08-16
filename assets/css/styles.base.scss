@@ -1,0 +1,321 @@
+/**
+* @name:          styles.base.scss
+* @description:   This stylesheet is for any globally required scss.
+*/
+
+/* Sitewide Class Additions
+----------------------------------------------------------------------*/
+$sizing: (0, 5, 10, 15, 20, 30, 50, 100);
+$positions: ("top", "left", "bottom", "right");
+@each $size in $sizing {
+  @each $position in $positions {
+    .m-#{$position}-#{$size} {
+      margin-#{$position}: $size + px !important;
+    }
+    .p-#{$position}-#{$size} {
+      padding-#{$position}: $size + px !important;
+    }
+  }
+}
+
+m-x-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.h-100 {
+  height: 100vh;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.fa {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.block {
+  display: block !important;
+}
+
+.none {
+  display: none !important;
+}
+
+/* Layout
+----------------------------------------------------------------------*/
+body {
+  overflow-x: hidden;
+}
+
+.auth .container,
+.front .container {
+  @media (min-width: 1408px) {
+    max-width: 1152px !important;
+  }
+}
+
+@include mobile {
+  .contact .hero-body,
+  .about .hero-body,
+  .auth .hero-body {
+    display: block !important;
+  }
+}
+
+@include tablet-only {
+  .contact #front > .columns,
+  .privacy #front > .columns,
+  .terms #front > .columns,
+  .auth #auth > .columns {
+    display: block;
+
+    .column:nth-child(1) {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .column:nth-child(2) {
+      width: 100%;
+      margin: 0;
+    }
+  }
+  .about #front > .columns {
+    display: block;
+  }
+}
+
+/* Buttons & Forms
+----------------------------------------------------------------------*/
+.button {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.13);
+}
+
+.input::placeholder,
+.textarea::placeholder,
+::-webkit-input-placeholder {
+  color: rgba(54, 54, 54, 1);
+}
+
+input[readonly] {
+  background: #ddd !important;
+  cursor: not-allowed;
+
+  & + .icon {
+    color: #555 !important;
+  }
+}
+
+.input.is-primary,
+textarea.is-primary {
+  background: #f7c4b0;
+  border: unset;
+
+  + .icon {
+    color: rgba(54, 54, 54, 0.3);
+  }
+}
+
+.input.is-success,
+textarea.is-success {
+  background: lightgreen;
+  border-color: unset;
+}
+
+.contact .field-label,
+.auth .field-label {
+  display: none;
+}
+
+.control .button.is-static {
+  width: 60px;
+}
+
+/* Footer
+----------------------------------------------------------------------*/
+.hero-foot {
+  nav ul > li:nth-child(n + 2) {
+    display: none;
+    @include tablet {
+      display: block;
+    }
+  }
+}
+
+/* Navbar 
+----------------------------------------------------------------------*/
+.hero-head {
+  height: 60px;
+
+  .navbar {
+    background: #403f4c;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+
+    @include touch {
+      .mobilemenu.show {
+        display: block;
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+      }
+
+      a {
+        padding-left: 15px;
+      }
+    }
+
+    .burger {
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+
+    .navbar-brand .navbar-item {
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+
+    .respond {
+      display: block;
+      @include desktop {
+        display: none;
+      }
+    }
+
+    hr.respond {
+      background: rgba(0, 0, 0, 0.05) !important;
+    }
+
+    .navbar-item {
+      color: #bbb !important;
+
+      &.is-active,
+      &:hover {
+        background: rgba(0, 0, 0, 0.15) !important;
+      }
+
+      &.is-active {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.dropdown {
+  margin-top: 9px;
+  display: none;
+  @include desktop {
+    display: block;
+  }
+
+  .dropdown-content {
+    padding-bottom: 0px;
+    padding-top: 0px;
+
+    .dropdown-item {
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+    }
+
+    .dropdown-item:first-child {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    .dropdown-item:last-child {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+
+    .dropdown-divider {
+      margin: 0;
+    }
+  }
+}
+
+/* Titles
+----------------------------------------------------------------------*/
+
+.headingbox {
+  margin-bottom: 30px;
+  border-bottom: 2px solid rgba(117, 119, 99, 0.05) !important;
+
+  h1,
+  p:last-child {
+    margin-bottom: 27px;
+    padding-right: 10px;
+    text-align: right;
+  }
+
+  p {
+    padding-right: 10px;
+    text-align: right;
+  }
+
+  @include tablet {
+    margin-bottom: 0px !important;
+    border-bottom: 0px !important;
+
+    h1,
+    p {
+      text-align: left !important;
+    }
+  }
+}
+
+.title {
+  font-size: 1.75rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+}
+
+/* Modal & Messages
+----------------------------------------------------------------------*/
+
+.modal-card {
+  width: 90%;
+  max-width: 700px;
+}
+
+.modal-card-foot {
+  padding: 10px 15px;
+}
+
+.message {
+  position: fixed;
+  z-index: 2;
+  bottom: 7%;
+  right: 10%;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation
+----------------------------------------------------------------------*/
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: 1s;
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  transition: 1s;
+  opacity: 0;
+}

@@ -1,0 +1,676 @@
+/**
+* @name:          styles.dash.scss
+* @description:   This stylesheet imports the required scss files for the front portion of the site. This file is imported from front.js.
+*/
+
+/* Made by Jimmy Gillam */
+$checked-color: #34b93d;
+$unchecked-color: #000;
+$checkbox-height: 70px;
+$background-color: #667788;
+$font-color: #efefef;
+$duration: 1s;
+
+.dash {
+  line-height: 1.8;
+}
+
+.formschema label,
+.taskname {
+  font-weight: bold;
+  display: block;
+}
+
+.formschema > div {
+  > h1 {
+    font-size: 20px;
+  }
+  > p {
+    color: #999;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #ddd;
+    margin-bottom: 20px;
+  }
+}
+
+.formschema input,
+.formschema select,
+.formschema textarea {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3) inset;
+  border: 0px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.formschema div[data-fs-field] {
+  margin-bottom: 20px;
+
+  button {
+    padding: 7px 30px;
+    font-size: 16px;
+    background: #f14e32;
+    border: 0px;
+    border-radius: 4px;
+    color: #fff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.31);
+    margin-top: 10px;
+  }
+}
+
+.formschema input[type="checkbox"] {
+  float: left;
+  width: unset;
+}
+
+.formschema div[data-fs-array-inputs] input {
+  margin-bottom: 10px;
+}
+
+.formschema div[data-fs-array-inputs] input:last-child {
+  margin-bottom: 0px;
+}
+
+.formschema div[data-fs-field] fieldset > div[data-fs-field] label {
+  font-weight: 400;
+  float: left;
+  clear: left;
+}
+.formschema div[data-fs-field] fieldset > div[data-fs-field] > div {
+  float: left;
+  margin-left: 10px;
+  margin-top: 8px;
+}
+
+.formico {
+  height: 36px;
+  position: absolute;
+  top: 7px;
+  left: 7px;
+}
+
+.formco {
+  position: relative;
+}
+
+.addtask {
+  .dropdown-input {
+    max-width: unset !important;
+    width: 100%;
+    padding: 8px 20px !important;
+    box-shadow: 0px 0px 3px rgba(10, 10, 10, 0.51) inset;
+    border: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    font-size: 14px !important;
+    color: #555 !important;
+  }
+  .fa-plus {
+    font-size: 14px;
+  }
+  .dropdown-content {
+    max-width: unset !important;
+    width: 100% !important;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1) !important;
+    border: 0px !important;
+
+    .dropdown-item {
+      font-size: 14px !important;
+      color: #999 !important;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 20px !important;
+
+      &:hover {
+        background-color: #f14e32 !important;
+        color: #fff !important;
+      }
+    }
+  }
+}
+
+.task {
+  .fa-download {
+    opacity: 0;
+    transition: 0.5s;
+    right: 19%;
+    position: absolute;
+    top: 41%;
+    color: #999;
+
+    &:hover {
+      color: #555;
+    }
+  }
+  &:hover .fa-download {
+    opacity: 1;
+  }
+}
+.modal-card-foot .downloadbutton {
+  position: absolute;
+  right: 15px;
+}
+.download {
+  @-moz-keyframes dothabottomcheck {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: $checkbox-height/2;
+    }
+  }
+
+  @-webkit-keyframes dothabottomcheck {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: $checkbox-height/2;
+    }
+  }
+
+  @keyframes dothabottomcheck {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: $checkbox-height/2;
+    }
+  }
+
+  @keyframes dothatopcheck {
+    0% {
+      height: 0;
+    }
+    50% {
+      height: 0;
+    }
+    100% {
+      height: $checkbox-height * 1.2;
+    }
+  }
+  @-webkit-keyframes dothatopcheck {
+    0% {
+      height: 0;
+    }
+    50% {
+      height: 0;
+    }
+    100% {
+      height: $checkbox-height * 1.2;
+    }
+  }
+  @-moz-keyframes dothatopcheck {
+    0% {
+      height: 0;
+    }
+    50% {
+      height: 0;
+    }
+    100% {
+      height: $checkbox-height * 1.2;
+    }
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  .check-box {
+    height: $checkbox-height;
+    width: $checkbox-height;
+    background-color: transparent;
+    border: $checkbox-height * 0.1 solid #ddd;
+    border-radius: 5px;
+    position: relative;
+    display: inline-block;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-transition: border-color ease $duration/2;
+    -o-transition: border-color ease $duration/2;
+    -webkit-transition: border-color ease $duration/2;
+    transition: border-color ease $duration/2;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      position: absolute;
+      height: 0;
+      width: 10px;
+      background-color: #f14e32;
+      display: inline-block;
+      -moz-transform-origin: left top;
+      -ms-transform-origin: left top;
+      -o-transform-origin: left top;
+      -webkit-transform-origin: left top;
+      transform-origin: left top;
+      border-radius: 10px;
+      content: " ";
+      -webkit-transition: opacity ease 0.5;
+      -moz-transition: opacity ease 0.5;
+      transition: opacity ease 0.5;
+    }
+
+    &::before {
+      top: $checkbox-height * 0.72;
+      left: $checkbox-height * 0.41;
+      -moz-transform: rotate(-135deg);
+      -ms-transform: rotate(-135deg);
+      -o-transform: rotate(-135deg);
+      -webkit-transform: rotate(-135deg);
+      transform: rotate(-135deg);
+    }
+
+    &::after {
+      top: $checkbox-height * 0.37;
+      left: $checkbox-height * 0.05;
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+  }
+
+  input[type="checkbox"]:checked + .check-box,
+  .check-box.checked {
+    border-color: #ddd;
+
+    &::after {
+      height: $checkbox-height * 0.5;
+      -moz-animation: dothabottomcheck $duration/2 ease 0s forwards;
+      -o-animation: dothabottomcheck $duration/2 ease 0s forwards;
+      -webkit-animation: dothabottomcheck $duration/2 ease 0s forwards;
+      animation: dothabottomcheck $duration/2 ease 0s forwards;
+    }
+
+    &::before {
+      height: $checkbox-height * 1.2;
+      -moz-animation: dothatopcheck $duration ease 0s forwards;
+      -o-animation: dothatopcheck $duration ease 0s forwards;
+      -webkit-animation: dothatopcheck $duration ease 0s forwards;
+      animation: dothatopcheck $duration ease 0s forwards;
+    }
+  }
+}
+
+/* Navbar
+----------------------------------------------------------------------*/
+
+#topbar {
+  height: 52px;
+
+  .navbar {
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+
+    &.confirm {
+      box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2),
+        0px -2px 3px rgba(0, 0, 0, 0.1);
+      top: 29px;
+    }
+
+    .dropdown {
+      margin-top: 7px;
+    }
+  }
+}
+
+/* Board
+----------------------------------------------------------------------*/
+
+.main {
+  position: relative;
+  height: 100vh;
+
+  #lists {
+    @include tablet {
+      overflow-x: scroll;
+      height: 100vh;
+      overflow-y: hidden;
+      width: calc(100% + 60px);
+      margin-left: -30px;
+      padding-left: 15px;
+    }
+
+    .list {
+      padding: 0;
+      background: #f1f1f1;
+      border-radius: 3px;
+      margin: 0;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+
+      li {
+        border-bottom: 1px solid #ddd;
+        padding-left: 17px !important;
+        cursor: pointer;
+        position: relative;
+
+        &.greenit {
+          background: #e0fae0 !important;
+        }
+
+        label {
+          display: block;
+          padding: 10px 10px 10px 0px !important;
+          cursor: pointer;
+
+          .taskname {
+            pointer-events: none;
+            vertical-align: middle;
+            width: 70%;
+            display: inline-block;
+            margin-left: 65px;
+
+            &.underline {
+              text-decoration: line-through;
+            }
+          }
+
+          .check {
+            background: #fff;
+            height: 25px;
+            width: 25px;
+            border: 1px solid #ddd;
+            box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1) inset;
+            font-size: 0.95em;
+            color: #fff;
+            vertical-align: middle;
+            border-radius: 5px;
+            pointer-events: none;
+            margin-right: 0px;
+
+            &.fa-check {
+              background: lightgreen;
+            }
+
+            &::before {
+              position: relative;
+              top: 4px;
+              left: 4px;
+            }
+          }
+        }
+
+        .delete {
+          right: 30px;
+          top: 40%;
+          opacity: 0;
+          margin-top: 0px;
+          position: absolute;
+        }
+
+        .is-loading {
+          position: relative;
+          pointer-events: none;
+          opacity: 0.5;
+          border-color: #ccc;
+
+          &:after {
+            @include loader;
+            position: absolute;
+            top: -32px;
+            left: -30px;
+            width: 1.5em;
+            height: 1.5em;
+            border-width: 0.25em;
+          }
+        }
+
+        &:hover .delete {
+          opacity: 1;
+          transition: all 0.2s 0s ease;
+        }
+      }
+
+      form {
+        input {
+          border-bottom-left-radius: 3px;
+        }
+
+        button {
+          border-top-right-radius: 0px;
+        }
+      }
+
+      header {
+        padding: 15px 30px;
+        border-bottom: 1px solid #ddd;
+
+        .delete {
+          position: relative;
+          top: -21px;
+        }
+
+        .is-loading {
+          position: relative;
+          pointer-events: none;
+          opacity: 0.5;
+          display: none;
+
+          &:after {
+            @include loader;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 1.25em;
+            height: 1.25em;
+            border-width: 0.25em;
+          }
+        }
+
+        p {
+          outline: unset;
+
+          &.active {
+            border-bottom: 1px dashed #ccc;
+          }
+
+          &.active + .delete {
+            display: none;
+          }
+        }
+
+        &:hover {
+          .delete {
+            opacity: 1;
+            transition: 0.2s;
+          }
+          .is-loading {
+            display: block;
+          }
+        }
+      }
+
+      .list-group {
+        padding: 0;
+        max-height: 338px;
+        overflow-y: scroll;
+        position: relative;
+        top: -4px;
+        width: 100%;
+
+        .task {
+          padding: 10px 20px;
+          border-bottom: 1px solid #ddd;
+          background: #f7f7f7;
+        }
+      }
+
+      .delete.head {
+        opacity: 0;
+        transition: 0.2s;
+      }
+    }
+  }
+}
+
+/* Boards
+----------------------------------------------------------------------*/
+
+#boards .wrapem {
+  flex-wrap: wrap;
+
+  .board {
+    margin-bottom: 0px !important;
+    margin-top: 20px !important;
+    border-bottom: 5px solid #eb5e28;
+    background: #fff !important;
+    height: 100%;
+    width: 32%;
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.3);
+
+    &:nth-child(3n) {
+      margin-left: 0px;
+    }
+
+    &:nth-child(3n + 3),
+    &:nth-child(3n + 2) {
+      margin-left: 2%;
+    }
+  }
+}
+
+.editbutton {
+  color: rgba(10, 10, 10, 0.2);
+  font-size: 1.4rem;
+  cursor: pointer;
+
+  &:hover {
+    color: rgba(10, 10, 10, 0.3);
+  }
+}
+
+/* Layout
+----------------------------------------------------------------------*/
+
+.dash {
+  @include tablet {
+    overflow-y: hidden;
+  }
+
+  &.profile .main {
+    overflow-y: scroll;
+  }
+}
+
+body {
+  height: 100vh;
+  background: #f0efe7 !important;
+}
+
+@include mobile {
+  .board {
+    width: 100% !important;
+    margin-left: 0px !important;
+    margin-bottom: 30px;
+  }
+}
+
+#main {
+  padding: 30px;
+  padding-top: 50px;
+}
+
+@include desktop {
+  #main {
+    width: 81.98%;
+    margin-left: 17.21%;
+  }
+}
+
+/* Profile
+----------------------------------------------------------------------*/
+
+.profile label {
+  font-size: 14px !important;
+}
+
+.portrait {
+  border-radius: 3px;
+  border: 3px solid #503d39;
+}
+
+.updateinfo {
+  position: relative;
+
+  > span {
+    opacity: 1;
+    transition: opacity 0.25s;
+  }
+
+  > i {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  &.checker {
+    > span {
+      opacity: 0;
+    }
+
+    > i {
+      opacity: 1;
+      color: #fff;
+      font-size: 18px;
+    }
+  }
+}
+
+/* Sidebar
+----------------------------------------------------------------------*/
+
+#sidebar {
+  left: -100%;
+  @include desktop {
+    left: 0px;
+  }
+  box-shadow: 2px 0px 3px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0px;
+  padding-left: 15px;
+  transition: 0.5s;
+  z-index: 10;
+  border-left: 7px solid #403f4c;
+
+  &.show {
+    left: 0px;
+  }
+
+  .menu-label {
+    text-align: right;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #403f4c;
+    margin-top: 30px;
+    padding-right: 15px;
+    color: #999;
+  }
+
+  .menu-list {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  li > a {
+    margin-top: 10px;
+  }
+
+  .createbutton {
+    transition: 0.25s;
+    cursor: pointer;
+    opacity: 0;
+    font-size: 10px;
+    margin-top: 2px;
+  }
+
+  &:hover {
+    .createbutton {
+      opacity: 1;
+      transition: 0.25s;
+    }
+  }
+}

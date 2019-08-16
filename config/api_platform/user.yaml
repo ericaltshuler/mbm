@@ -1,0 +1,7 @@
+App\Entity\User: 
+    subresource: 
+        resourceClass: App\Entity\Board
+        collection: true
+    collectionOperations: ~
+    itemOperations: ~
+    

@@ -1,0 +1,5 @@
+App\Entity\Card: 
+    attributes:
+        order: {position: ASC}
+    collectionOperations: ~
+    itemOperations: ~

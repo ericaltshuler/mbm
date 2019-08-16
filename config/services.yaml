@@ -1,0 +1,42 @@
+parameters:
+    locale: 'en'
+    from_address: 'mail@todone.local'
+
+services:
+
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
+        arguments:
+            - !service { class: PDO, factory: 'database_connection:getWrappedConnection' }
+            - { lock_mode: 1 }
+
+    App\Doctrine\UserSubscriber:
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+            
+    App\Doctrine\CardSubscriber:
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+            
+    App\Mailer\UserMailer:
+        arguments:
+            $env: "%kernel.environment%"
+    
+    App\Mailer\AdminMailer:
+        arguments:
+            $env: "%kernel.environment%"
+            
+    App\Service\Root:
+        arguments:
+            $root: "%kernel.project_dir%" 

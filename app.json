@@ -1,0 +1,12 @@
+{
+  "name": "Unnamed",
+  "description": "An unnamed app.",
+  "buildpacks": [
+    {
+      "url": "heroku/php"
+    },
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}

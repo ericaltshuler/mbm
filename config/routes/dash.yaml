@@ -1,0 +1,18 @@
+#   Dashboard
+# ----------------------------------#
+
+Boards:
+    path: /boards
+    controller: App\Controller\DashController::boards
+
+Board:
+    path: /board/{slug}
+    controller: App\Controller\DashController::board
+
+Profile:
+    path: /profile
+    controller: App\Controller\DashController::profile
+
+Download:
+   path: /download
+   controller: App\Controller\DashController::pdf

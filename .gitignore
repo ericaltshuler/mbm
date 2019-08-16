@@ -1,0 +1,10 @@
+/var/
+/vendor/
+/node_modules/
+/public/assets/
+/public/fonts/
+/public/cache/
+/public/bundles/
+/.brackets.json
+/.env
+.DS_STORE

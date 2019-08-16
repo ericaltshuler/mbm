@@ -1,0 +1,53 @@
+/**
+* @name:          base.scss
+* @description:   This stylesheet imports all of the globally required scss files. Anything used across the entire site is imported here.
+*/
+
+/* Fonts + Icons
+-----------------------------------------------*/
+// Google Fonts
+@import url("https://fonts.googleapis.com/css?family=Assistant");
+
+// Font Awesome 5 CSS
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+/* Bulma + Variable Overides
+------------------------------------------------*/
+// Bulma - Initial Variables
+
+$primary: #f14e32; // Primary
+$info: #309db6; // Secondary
+$light: #f0efe7; // Light
+$dark: #757763; // Text
+$grey-dark: #403f4c; // Dark
+$black: #353535; // Black
+$grey: #999; // Light Text
+
+$family-primary: "Assistant", sans-serif;
+
+// Forms Overides
+$input-hover-border-color: hsl(0, 0%, 86%);
+$input-focus-border-color: hsl(0, 0%, 86%);
+
+// Elements Overides
+$box-padding: 1rem !important;
+
+// Component Overides
+$menu-item-active-background-color: $primary;
+$menu-item-hover-background-color: $info;
+$menu-item-color: #bbb;
+$menu-item-hover-color: $light;
+$menu-item-active-color: $light;
+$menu-label-color: $light;
+
+@import "~bulma/bulma";
+
+/* Animate.css
+------------------------------------------------*/
+@import "~animate.css";
+
+/* Sitewide Custom Stylesheet
+------------------------------------------------*/
+
+// styles.base.scss
+@import "styles.base.scss";
